@@ -6,6 +6,11 @@ const container = document.querySelector('#root') // 담은 변수
 const root = ReactDOM.createRoot(container) // DOM -> React
 root.render(<App />) // root.render(<App />)
 
+// A 
+// A()
+
+// <A />
+
 
 
 // 메뉴누르면 컴포넌트 내용바뀌게. 

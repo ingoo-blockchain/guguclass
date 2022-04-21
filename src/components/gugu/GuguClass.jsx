@@ -24,11 +24,12 @@ class GuguClass extends Component{
     render(){
         return(
             <>
-                <GuguForm 
-                    onSubmit={this.handleSubmit}
-                />
+                
                 <GuguList 
                     value={this.state.value}
+                />
+                <GuguForm 
+                    onSubmit={this.handleSubmit}
                 />
             </>
         )

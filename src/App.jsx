@@ -4,7 +4,10 @@ import styels from './assets/App.module.css'
 import styelss from './assets/test.module.css'
 // import styles from './assets/a.module.css'
 import styled from 'styled-components'
-import GuguClass from './components/GuguClass'
+import GuguClass from './components/gugu/GuguClass'
+import Comment from './components/comment/Comment'
+import CommentForm from './components/comment/CommentForm'
+import CommentList from './components/comment/CommentList'
 
 // 컴포넌트 내에서. 바로 CSS를 작업한 내용을 만들수있다.
 
@@ -57,13 +60,41 @@ const ActiveButton = styled(Button)`
 class App extends Component{
 
     state = {
-        value:'hello qweqwedfd!!!!'
+        value:'hello qweqwedfd!!!!',
+        list:[]   
     }
 
+    // 생명주기 함수 
+    componentDidMount(){ // 최초실행.
+        this.setState({ // 불변성...  데이터가 화면이바뀐다.
+            ...this.state,
+            list:[
+                {userid:'web7722',content:'안녕하세요2',date:"2022-04-21"},
+                {userid:'web7722',content:'안녕하세요3',date:"2022-04-21"},
+                {userid:'web7722',content:'안녕하세요4',date:"2022-04-21"}
+            ]
+        })
+    }
+
+    // content : stirng
+    // obj
+    addList = (obj) => {
+        this.setState({
+            list:[...this.state.list, obj]
+        })
+    }
+
+
+
     render(){
+        const { list } = this.state
         return(
             <>
-                <GuguClass />
+                <Comment> 
+                    <CommentForm addList={ this.addList }/> 
+                    <CommentList list={ list }/> 
+                </Comment> 
+                {/* <GuguClass /> */}
                 {/* <div className="color">{this.state.value}</div>
                 <div className={styels.color}>여기는App module css</div>
                 <div className={styelss.color}>여기는Test module css</div>
@@ -82,9 +113,6 @@ class App extends Component{
     }
 }
 
-function hi(){
-    console.log('hello world')
-}
 
 export default App;
 
