@@ -69,10 +69,10 @@ class App extends Component{
         this.setState({ // 불변성...  데이터가 화면이바뀐다.
             ...this.state,
             list:[
-                {userid:'web7722',content:'안녕하세요2',date:"2022-04-21"},
-                {userid:'web7722',content:'안녕하세요3',date:"2022-04-21"},
-                {userid:'web7722',content:'안녕하세요4',date:"2022-04-21"}
-            ]
+                {userid:'web7722',content:'안녕하세요2',date:"2022-04-21",updateflag:true},
+                {userid:'web7722',content:'안녕하세요3',date:"2022-04-21",updateflag:true},
+                {userid:'web7722',content:'안녕하세요4',date:"2022-04-21",updateflag:true}
+            ],
         })
     }
 
@@ -80,9 +80,20 @@ class App extends Component{
     // obj
     addList = (obj) => {
         this.setState({
+            ...this.state,
             list:[...this.state.list, obj]
         })
     }
+
+    // state 끌어올리기 하다보면 상태를 바꾸는 함수를 만들어야되여, 
+
+    updateList = list => {
+        this.setState({
+            ...this.state,
+            list
+        })
+    }
+
 
 
 
@@ -91,8 +102,43 @@ class App extends Component{
         return(
             <>
                 <Comment> 
-                    <CommentForm addList={ this.addList }/> 
-                    <CommentList list={ list }/> 
+                    <CommentForm 
+                        addList={ this.addList }
+                    /> 
+                    <CommentList 
+                        list={ list }
+                        updateList={ this.updateList }
+                    /> 
+                </Comment> 
+
+                <Comment> 
+                    <CommentForm 
+                        addList={ this.addList }
+                    /> 
+                    <CommentList 
+                        list={ list }
+                        updateList={ this.updateList }
+                    /> 
+                </Comment> 
+
+                <Comment> 
+                    <CommentForm 
+                        addList={ this.addList }
+                    /> 
+                    <CommentList 
+                        list={ list }
+                        updateList={ this.updateList }
+                    /> 
+                </Comment> 
+
+                <Comment> 
+                    <CommentForm 
+                        addList={ this.addList }
+                    /> 
+                    <CommentList 
+                        list={ list }
+                        updateList={ this.updateList }
+                    /> 
                 </Comment> 
                 {/* <GuguClass /> */}
                 {/* <div className="color">{this.state.value}</div>

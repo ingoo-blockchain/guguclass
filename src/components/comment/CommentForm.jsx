@@ -19,7 +19,7 @@ class CommentForm extends Component{
         // axios 가발동.
         // 결과물을 줄때. 그때 상태를 바꾸면되여.
         // then 콜백 함수 안에서 상태를 바꾸시면 됩니다.
-        const obj = {userid:'web7722',content:this.state.value,date:"2022-04-21"}
+        const obj = {userid:'web7722',content:this.state.value,date:"2022-04-21",updateflag:true}
         
         this.props.addList(obj)
         this.setState({
